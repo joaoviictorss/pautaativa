@@ -1,4 +1,4 @@
-# PautaViva
+# PautaAtiva
 
 Plataforma de participação cidadã — proposição, discussão, moderação e
 votação de pautas locais em tempo real. (TCC)
@@ -65,3 +65,13 @@ funcionando de ponta a ponta, ainda sem as regras de negócio do domínio:
   `pautaId` (`join-pauta` / `leave-pauta`) prontas para os eventos de
   discussão e votação em tempo real.
 - Frontend com Tailwind CSS configurado, sem UI além de um placeholder.
+
+### Nota sobre hot-reload no Docker (Windows)
+
+Bind mounts do Docker Desktop no Windows não propagam eventos de inotify
+para dentro do container, então tanto o backend quanto o frontend usam
+watch por **polling**: o backend roda `tsx` por trás do `nodemon
+--legacy-watch`, e o Vite tem `server.watch.usePolling: true`. Isso faz o
+hot-reload funcionar de forma confiável em qualquer host, ao custo de levar
+alguns segundos a mais para detectar a mudança (o polling não é instantâneo
+como inotify).

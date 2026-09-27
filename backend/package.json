@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "PautaViva API - Fastify + Prisma + Socket.io",
+  "description": "PautaAtiva API - Fastify + Prisma + Socket.io",
   "main": "src/http/server.ts",
   "type": "module",
   "scripts": {
