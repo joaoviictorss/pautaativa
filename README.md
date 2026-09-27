@@ -1,4 +1,4 @@
-# PautaViva
+# PautaAtiva
 
 Plataforma de participação cidadã — proposição, discussão, moderação e
 votação de pautas locais em tempo real. (TCC)
