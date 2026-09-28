@@ -1,3 +1,5 @@
+import { getInitials } from '@/lib/utils/format'
+
 const PALETTE: Array<[bg: string, fg: string]> = [
   ['oklch(0.9656 0.0176 39.4009)', 'oklch(0.5581 0.1911 35.3377)'],
   ['oklch(0.93 0.04 259.7)', 'oklch(0.45 0.16 259.7)'],
@@ -31,14 +33,6 @@ export interface AvatarData {
   src: string
 }
 
-function initials(name: string) {
-  return name
-    .split(' ')
-    .map((word) => word[0])
-    .slice(0, 2)
-    .join('')
-}
-
 /** Determinístico: mesmo nome + índice sempre gera o mesmo avatar. */
 export function getAvatar(name: string, index: number): AvatarData {
   const [bg, fg] = PALETTE[index % PALETTE.length]
@@ -46,7 +40,7 @@ export function getAvatar(name: string, index: number): AvatarData {
   const id = ((personIndex >= 0 ? personIndex : index + 7) % AVATAR_COUNT) + 1
   return {
     name,
-    initials: initials(name),
+    initials: getInitials(name),
     bg,
     fg,
     src: `https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-${id}.png`,

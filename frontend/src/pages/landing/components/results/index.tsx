@@ -1,8 +1,11 @@
 import { useState } from 'react'
 
 import { useCountdown } from '@/hooks/use-countdown'
-import { formatNumber, seededRandom } from '@/lib/format'
-import { getBars, getDonutSegments, getSeriesPath, getTotal, POLL_END_AT } from '@/lib/poll'
+import { seededRandom } from '@/lib/mocks/random'
+import { formatNumber } from '@/lib/utils/format'
+import { POLL_END_AT } from '@/lib/mocks/poll'
+import { getDonutSegments, getSeriesPath } from '@/lib/poll/charts'
+import { getBars, getTotal } from '@/lib/poll/votes'
 
 import { Results as Layout } from './layout'
 import type {

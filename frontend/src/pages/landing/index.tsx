@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { PEOPLE } from '@/lib/avatars'
-import { seededRandom } from '@/lib/format'
-import type { VoteKey, Votes } from '@/lib/poll'
+import { PEOPLE } from '@/lib/mocks/people'
+import { seededRandom } from '@/lib/mocks/random'
+import type { VoteKey, Votes } from '@/lib/poll/votes'
 
 import { CtaFinal } from './components/cta-final'
 import { Faq } from './components/faq'

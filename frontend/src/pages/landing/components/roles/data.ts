@@ -1,6 +1,6 @@
 import type { LucideIcon } from 'lucide-react'
 
-import type { AvatarData } from '@/lib/avatars'
+import type { AvatarData } from '@/lib/mocks/people'
 
 export interface RolesProps {}
 

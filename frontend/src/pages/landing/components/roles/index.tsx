@@ -1,6 +1,6 @@
 import { LandmarkIcon, ShieldCheckIcon, UserRoundIcon } from 'lucide-react'
 
-import { getAvatar } from '@/lib/avatars'
+import { getAvatar } from '@/lib/mocks/people'
 
 import { Roles as Layout } from './layout'
 import type { Role, RolesLayoutProps, RolesProps } from './data'

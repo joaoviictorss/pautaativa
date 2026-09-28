@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { CheckIcon, ClockIcon, LaptopIcon, MonitorIcon, ScanSearchIcon, ShieldXIcon, SmartphoneIcon } from 'lucide-react'
 
-import { getAvatar } from '@/lib/avatars'
-import { formatNumber, seededRandom } from '@/lib/format'
-import { getBars, getPercent, getTotal } from '@/lib/poll'
+import { getAvatar } from '@/lib/mocks/people'
+import { seededRandom } from '@/lib/mocks/random'
+import { formatNumber } from '@/lib/utils/format'
+import { getBars, getPercent, getTotal } from '@/lib/poll/votes'
 
 import { Features as Layout } from './layout'
 import type {

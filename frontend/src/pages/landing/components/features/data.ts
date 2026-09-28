@@ -1,8 +1,8 @@
 import type { LucideIcon } from 'lucide-react'
 
 import type { PollDemo } from '@/pages/landing'
-import type { AvatarData } from '@/lib/avatars'
-import type { VoteBar } from '@/lib/poll'
+import type { AvatarData } from '@/lib/mocks/people'
+import type { VoteBar } from '@/lib/poll/votes'
 
 export interface FeaturesProps {
   poll: PollDemo

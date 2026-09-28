@@ -1,3 +1,5 @@
+import { Link } from '@tanstack/react-router'
+
 import { Button } from '@/components/ui/button'
 
 import type { HeaderLayoutProps } from '../data'
@@ -24,10 +26,12 @@ export function Header({ navLinks }: HeaderLayoutProps) {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" className="h-9 rounded-full px-3.5">
+          <Button render={<Link to="/entrar" />} variant="ghost" className="h-9 rounded-full px-3.5">
             Entrar
           </Button>
-          <Button className="h-9 rounded-full px-4">Criar conta</Button>
+          <Button render={<Link to="/cadastro" />} className="h-9 rounded-full px-4">
+            Criar conta
+          </Button>
         </div>
       </nav>
     </header>

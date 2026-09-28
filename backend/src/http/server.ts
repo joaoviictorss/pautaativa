@@ -1,5 +1,4 @@
 import fastifyCors from '@fastify/cors'
-import fastifyJwt from '@fastify/jwt'
 import fastify from 'fastify'
 import {
   serializerCompiler,
@@ -9,11 +8,11 @@ import {
 
 import { env } from '../env.js'
 import { errorHandler } from './error-handler.js'
-import { authenticate } from './routes/auth/authenticate.js'
-import { register } from './routes/auth/register.js'
+import { authPlugin } from './middlewares/auth.js'
+import { authRoutes } from './routes/auth.js'
 import { setupSockets } from './sockets/index.js'
 
-const app = fastify().withTypeProvider<ZodTypeProvider>()
+const app = fastify({ trustProxy: env.TRUST_PROXY }).withTypeProvider<ZodTypeProvider>()
 
 app.setSerializerCompiler(serializerCompiler)
 app.setValidatorCompiler(validatorCompiler)
@@ -21,14 +20,11 @@ app.setErrorHandler(errorHandler)
 
 app.register(fastifyCors, {
   origin: env.CORS_ORIGIN,
+  credentials: true,
 })
 
-app.register(fastifyJwt, {
-  secret: env.JWT_SECRET,
-})
-
-app.register(register)
-app.register(authenticate)
+app.register(authPlugin)
+app.register(authRoutes)
 
 app.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
   setupSockets(app.server)

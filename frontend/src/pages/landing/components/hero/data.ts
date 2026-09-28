@@ -1,6 +1,6 @@
-import type { AvatarData } from '@/lib/avatars'
+import type { AvatarData } from '@/lib/mocks/people'
 import type { PollDemo } from '@/pages/landing'
-import type { VoteBar, VoteKey } from '@/lib/poll'
+import type { VoteBar, VoteKey } from '@/lib/poll/votes'
 
 export interface HeroProps {
   poll: PollDemo

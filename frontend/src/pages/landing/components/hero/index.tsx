@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 
-import { getAvatar, PEOPLE } from '@/lib/avatars'
-import { formatNumber } from '@/lib/format'
-import { getBars, getTotal, POLL_END_AT } from '@/lib/poll'
+import { getAvatar, PEOPLE } from '@/lib/mocks/people'
+import { formatNumber } from '@/lib/utils/format'
+import { POLL_END_AT } from '@/lib/mocks/poll'
+import { getBars, getTotal } from '@/lib/poll/votes'
 import { useCountdown } from '@/hooks/use-countdown'
 
 import { Hero as Layout } from './layout'

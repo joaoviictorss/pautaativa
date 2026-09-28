@@ -17,7 +17,11 @@ services:
 
   backend:
     build: ./backend
-    env_file: .env
+    # backend/.env traz as variáveis da aplicação (SMTP etc.); o .env da raiz
+    # vem depois e sobrescreve o que muda dentro do compose (ex.: DATABASE_URL).
+    env_file:
+      - backend/.env
+      - .env
     ports:
       - "3333:3333"
     volumes:

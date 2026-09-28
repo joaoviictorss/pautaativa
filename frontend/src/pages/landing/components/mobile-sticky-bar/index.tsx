@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 
 import { useCountdown } from '@/hooks/use-countdown'
-import { formatNumber } from '@/lib/format'
-import { getTotal, POLL_END_AT } from '@/lib/poll'
+import { formatNumber } from '@/lib/utils/format'
+import { POLL_END_AT } from '@/lib/mocks/poll'
+import { getTotal } from '@/lib/poll/votes'
 
 import { MobileStickyBar as Layout } from './layout'
 import type { MobileStickyBarLayoutProps, MobileStickyBarProps } from './data'

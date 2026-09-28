@@ -7,12 +7,69 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id           String   @id @default(uuid())
-  name         String
-  email        String   @unique
-  passwordHash String
-  createdAt    DateTime @default(now())
+model Users {
+  id                  String     @id
+  name                String
+  email               String
+  emailVerified       Boolean    @default(false)
+  image               String?
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+  cpf                 String     @unique
+  role                String     @default("cidadao")
+  failedLoginAttempts Int        @default(0)
+  lockedUntil         DateTime?
+  sessions            Sessions[]
+  accounts            Accounts[]
 
+  @@unique([email])
   @@map("users")
+}
+
+model Sessions {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  users     Users    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@index([userId])
+  @@map("sessions")
+}
+
+model Accounts {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  users                 Users     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("accounts")
+}
+
+model Verifications {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verifications")
 }

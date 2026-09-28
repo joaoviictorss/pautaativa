@@ -1,5 +1,6 @@
 import type { PollDemo } from '@/pages/landing'
-import type { DonutSegment, VoteBar } from '@/lib/poll'
+import type { DonutSegment } from '@/lib/poll/charts'
+import type { VoteBar } from '@/lib/poll/votes'
 
 export type ResultsTabId = 'vivo' | 'bairro' | 'hora'
 
