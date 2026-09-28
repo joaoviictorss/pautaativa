@@ -1,7 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/plus-jakarta-sans/wght-italic.css";
+@import "@fontsource-variable/lora/wght-italic.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -192,8 +196,51 @@
   body {
     @apply bg-background text-foreground;
     letter-spacing: var(--tracking-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
     }
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+    }
+}
+
+@keyframes word-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes flow-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes live-pulse {
+  0% { box-shadow: 0 0 0 0 oklch(0.6404 0.2153 35.9 / .55); }
+  100% { box-shadow: 0 0 0 8px oklch(0.6404 0.2153 35.9 / 0); }
+}
+@keyframes row-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes value-flash {
+  0% { background: oklch(0.9656 0.0176 39.4); }
+  100% { background: transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, [data-reveal] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
